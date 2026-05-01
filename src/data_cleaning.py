@@ -1,12 +1,4 @@
-"""
-This script cleans messy sales data by:
-- Standardizing column names
-- Cleaning text fields
-- Converting data types
-- Handling missing values
-- Removing invalid rows
-- Removing duplicates
-"""
+#This script cleans messy sales data by standardizing column names, handling missing values, and removing invalid rows.
 
 import pandas as pd
 
@@ -68,17 +60,13 @@ def remove_duplicates(df):
 if __name__ == "__main__":
     raw_path = "data/raw/sales_data_raw.csv"
     cleaned_path = "data/processed/sales_data_clean.csv"
-
     df_raw = load_data(raw_path)
-
     df_clean = clean_column_names(df_raw)
     df_clean = convert_data_types(df_clean)
     df_clean = clean_text_columns(df_clean)
     df_clean = handle_missing_values(df_clean)
     df_clean = remove_invalid_rows(df_clean)
     df_clean = remove_duplicates(df_clean)
-
     df_clean.to_csv(cleaned_path, index=False)
-
     print("Cleaning complete. First few rows:")
     print(df_clean.head())
